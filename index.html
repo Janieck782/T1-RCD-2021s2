@@ -17,7 +17,6 @@
 
     <!--Animated-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
@@ -30,8 +29,8 @@
         <div class=" datos">
             <h2>1. Validador Digito Verificador</h2>
             <p>Ingrese un rut:</p>
-            <input type="text" placeholder="30686957-4">
-            <button>Continuar </button>
+            <input type="text" placeholder="30686957-4" id="rut_aux">
+            <button onclick="guardarRut(this)">Continuar </button>
         </div>
         <div class="resultado">
 
@@ -41,9 +40,9 @@
     <div class="contenedor funcion">
         <div class="datos">
             <h2>2. Split Nombre Propio </h2>
-            <p>Ingrese un nombre:</p>
-            <input type="text" placeholder="Nombres Apellidos">
-            <button>Continuar </button>
+            <p>Ingrese un nombre completo:</p>
+            <input type="text" placeholder="Nombres Apellidos" id="nombre_aux">
+            <button onclick="guardarNombre(this)" >Continuar </button>
         </div>
         <div class="resultado">
 
@@ -51,6 +50,12 @@
     </div>
     
 </body>
+
+<footer>
+
+    <!--JavaScript-->
+    <script src="js/app.js"></script>
+</footer>
 
 
 
