@@ -27,7 +27,8 @@ function guardarRut(enlace){
         if(run[0].match(valoresAceptados) && (run[1].match(valoresAceptados) || run[1] == "k" || run[1] == "K")){
             rut_.entero = parseInt(run[0]);
             rut_.dv = run[1].toLowerCase();
-            console.log(rut_);
+            comprobar(in_r);
+
         }else{
             alert("Formato de RUT no valido.");
         }
@@ -53,3 +54,4 @@ function guardarNombre(enlace){
         }
     }
 }
+

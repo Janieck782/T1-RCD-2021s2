@@ -24,8 +24,40 @@
 
 <body>
     <h1>Trabajo N°1 Redes Y Comunicacion De Datos</h1>
+
+    <div class="contenedor funcion">
+        <div class=" datos">
+            <h2>1. Validador Digito Verificador</h2>
+            <p>Ingrese un rut:</p>
+            <input type="text" placeholder="30686957-4" id="rut_aux">
+            <button onclick="guardarRut(this)">Continuar </button>
+        </div>
+        <div class="resultado">
+
+        </div>  
+    </div>
+
+    <div class="contenedor funcion">
+        <div class="datos">
+            <h2>2. Split Nombre Propio </h2>
+            <p>Ingrese un nombre completo:</p>
+            <input type="text" placeholder="Nombres Apellidos" id="nombre_aux">
+            <button onclick="guardarNombre(this)" >Continuar </button>
+        </div>
+        <div class="resultado">
+
+        </div>
+    </div>
     
-
-
-    <a href="input.html" class="contenedor">Continuar</a>
 </body>
+
+<footer>
+
+    <!--JavaScript-->
+    <script src="js/app.js"></script>
+    <script src="js/clienteRestApi.js"></script>
+</footer>
+
+
+
+</html>
