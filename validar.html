@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cliente REST</title>
+    <title>Validacion de RUT</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
@@ -21,10 +21,10 @@
             <div class="collapse navbar-collapse" id="navbarsupportedcontent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">pagina principal</a>
+                        <a class="nav-link" href="index.html">pagina principal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="validar.html">funcion validar rut</a>
+                        <a class="nav-link active" aria-current="page" href="validar.html">funcion validar rut</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="split.html">funcion separar nombre</a>
@@ -33,8 +33,26 @@
             </div>
         </div>
     </nav>
-    <h1 class="display-1 text-center">Cliente REST</h1>
-
+    <section class="container">
+        <h2 class='display-4'>Funcion validar rut</h2>
+        <p class="lead">En esta seccion se ejecuta la llamada a la API para la validacion de un RUT.
+            Ingrese su rut sin puntos ni guion en el input RUT, seguido por el digito verificador
+            en el input DV.
+        </p>
+        <form action="#" class="needs-validation row" method="GET" id="validar_rut">
+            <div class="col">
+                <label for="rut_input" class="form-label">RUT:</label>
+                <input type="number" name="rut" id="rut_input" class="form-control">
+            </div>
+            <div class="col">
+                <label for="dv_input" class="form-label">Digito verificador:</label>
+                <input type="text" name="dv" id="dv_input" class="form-control">
+            </div>
+            <div class="col-12 d-flex justify-content-center mt-3">
+                <button type="button" class="btn btn-primary">Comprobar</button>
+            </div>
+        </form>
+    </section>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="dist/main.js"></script>
 </body>
