@@ -33,6 +33,13 @@
             </div>
         </div>
     </nav>
+    <section class="container rounded my-3 p-2 text-danger" id="api_error" style="background-color: rgb(255, 173, 186);"
+        hidden>
+        <h1 class='display-1'>404!</h1>
+        <p class='lead'>Ha ocurrido un error al intentar conectar con la API. Por favor revise que el archivo
+            config.json contenga
+            los valores correctos y la API este montada en Tomcat</p>
+    </section>
     <section class="container">
         <h2 class='display-4'>Funcion validar rut</h2>
         <p class="lead">En esta seccion se ejecuta la llamada a la API para la validacion de un RUT.
