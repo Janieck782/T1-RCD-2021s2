@@ -33,9 +33,11 @@
             </div>
         </div>
     </nav>
-    <section class="container rounded my-3 p-2 text-danger" id="api_error" style="background-color: rgb(255, 173, 186);" hidden>
+    <section class="container rounded my-3 p-2 text-danger" id="api_error" style="background-color: rgb(255, 173, 186);"
+        hidden>
         <h1 class='display-1'>404!</h1>
-        <p class='lead'>Ha ocurrido un error al intentar conectar con la API. Por favor revise que el archivo config.json contenga
+        <p class='lead'>Ha ocurrido un error al intentar conectar con la API. Por favor revise que el archivo
+            config.json contenga
             los valores correctos y la API este montada en Tomcat</p>
     </section>
     <section class="container">
@@ -47,8 +49,9 @@
         <form action="#" class="needs-validation row" method="GET" id="separar_nombres" novalidate>
             <div class="col">
                 <label for="nombre_input" class="form-label">Nombre completo:</label>
-                <input type="text" class="form-control" name="nombre" placeholder="Wilfedro Transito Primitivo" required id="nombre_input">
-                <div class="invalid-feedback">Este campo no puede estar vacio!</div>
+                <input type="text" onchange="separarnombres(this)" name="nombre"
+                    placeholder="Wilfedro Transito Primitivo" required id="nombre_input" class="form-control">
+                <div class="invalid-feedback">Este campo debe contener al menos tres 'palabra' separadas por espacios</div>
             </div>
             <div class="col-12 d-flex justify-content-center mt-3">
                 <button type="submit" class="btn btn-primary">Enviar nombre</button>
