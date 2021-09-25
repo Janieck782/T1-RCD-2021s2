@@ -1,9 +1,12 @@
 package com.main;
 
+import com.model.RutValidatorModel;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 @Path("/validar/{rut}/{dv}")
 public class RutDigitValidator {
@@ -16,12 +19,20 @@ public class RutDigitValidator {
 
     @GET
     @Produces("application/json")
-    public String validar() {
+    public Response validar() {
+        int parsed_rut;
+        char parsed_dv;
+        try {
+            parsed_rut = Integer.parseInt(rut);
+            parsed_dv = dv.charAt(0);
+        }
+        catch (NumberFormatException e) {
+            return Response.status(400).build();
+        }
 
-        return "{" +
-                "\"rut\": \"" + rut + "\", " +
-                "\"dv\": \"" + dv
-                + "\"}";
+        RutValidatorModel res = new RutValidatorModel(parsed_rut, parsed_dv);
+
+        return Response.ok(res).build();
     }
 
 }
