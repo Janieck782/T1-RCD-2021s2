@@ -5,7 +5,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 @Path("/")
-public class HelloResource {
+public class IndexResource {
     @GET
     @Produces("text/plain")
     public String hello() {
