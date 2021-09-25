@@ -10,9 +10,40 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="display-1">Hola!</h1>
-    </div>
+    <h1 class="display-1 text-center">Cliente REST</h1>
+    <section class="container">
+        <h2>Funcion validar rut</h2>
+        <p>En esta seccion se ejecuta la llamada a la API para la validacion de un RUT.
+            Ingrese su rut sin puntos ni guion en el input RUT, seguido por el digito verificador
+            en el input DV.
+        </p>
+        <form action="#" class="needs-validation row" method="GET">
+            <div class="col">
+                <label for="rut_input" class="form-label">RUT:</label>
+                <input type="number" name="rut" id="rut_input" class="form-control">
+            </div>
+            <div class="col">
+                <label for="dv_input" class="form-label">Digito verificador:</label>
+                <input type="text" name="dv" id="dv_input" class="form-control">
+            </div>
+            <div class="col-12 d-flex justify-content-center mt-3">
+                <button type="button" class="btn btn-primary">Comprobar</button>
+            </div>
+        </form>
+    </section>
+    <hr>
+    <section class="container">
+        <h2>Funcion Split</h2>
+        <p>En esta seccion se ejecuta la llamada a la API para la separacion de nombres y apellidos.
+            Ingrese su nombre completo en el campo Nombre y presione el boton.
+        </p>
+        <form action="#" class="needs-validation row" method="GET">
+            <div class="col">
+                <label for="nombre_input" class="form-label">Nombre completo:</label>
+                <input type="text" class="form-control" name="nombre" id="nombre_input">
+                </div>
+        </form>
+    </section>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="dist/main.js"></script>
 </body>
