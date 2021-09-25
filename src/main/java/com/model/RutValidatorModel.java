@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class RutValidatorModel implements Serializable {
     private int rut;
     private char dv;
-    private boolean isValid;
+    private final boolean isValid;
 
     public RutValidatorModel(int rut, char dv) {
         super();
@@ -16,7 +16,14 @@ public class RutValidatorModel implements Serializable {
     }
 
     private boolean validate() {
-        return true;
+        int rutAux = this.rut;
+        int m = 0, s = 1;
+
+        for (; rutAux != 0; rutAux /= 10) {
+            s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+        }
+
+        return this.dv == (char) (s != 0 ? s + 47 : 75);
     }
 
     public int getRut() {
@@ -37,9 +44,5 @@ public class RutValidatorModel implements Serializable {
 
     public boolean isValid() {
         return isValid;
-    }
-
-    public void setValid(boolean valid) {
-        isValid = valid;
     }
 }

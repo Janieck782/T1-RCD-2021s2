@@ -7,6 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import java.util.Locale;
 
 @Path("/validar/{rut}/{dv}")
 public class RutDigitValidator {
@@ -24,7 +25,7 @@ public class RutDigitValidator {
         char parsed_dv;
         try {
             parsed_rut = Integer.parseInt(rut);
-            parsed_dv = dv.charAt(0);
+            parsed_dv = dv.toUpperCase(Locale.ROOT).charAt(0);
         }
         catch (NumberFormatException e) {
             return Response.status(400).build();
