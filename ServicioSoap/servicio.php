@@ -22,20 +22,24 @@ $servicio->wsdl->addComplexType(
       )
     )
   );
-$servicio->register("ValDigVer", array('RutSinDig' => 'xsd:integer', 'DigVer' => 'xsd:integer'), array('return' => 'xsd:boolean'), $ns);
+$servicio->register("ValDigVer", array('RutSinDig' => 'xsd:string', 'DigVer' => 'xsd:string'), array('return' => 'xsd:boolean'), $ns);
 $servicio->register("Split", array('Nom' => 'xsd:string'), array('nombres' => 'tns:Nombres', 'apellidos' => 'tns:Nombres' ), $ns);
 
 function ValDigVer($RutSinDig, $DigVer){
-    $s=1;
-    for($m=0;$RutSinDig!=0;$RutSinDig/=10)
-        $s=($s+$RutSinDig%10*(9-$m++%6))%11;
-    echo $aux = chr($s?$s+47:75);
+//echo $RutSinDig;
 
-    if($aux==$DigVer){
-        return true;
-    }else{
-        return false;
+    if(!is_numeric($RutSinDig)){
+        return new soap_fault('3', '', 'El Rut debe ser un valor entero','');
     }
+
+    $s=1;
+    for($m=0;$RutSinDig!=0;$RutSinDig/=10){
+        $s=($s+$RutSinDig%10*(9-$m++%6))%11;
+    }
+    $aux = chr($s?$s+47:75);
+
+    return $aux==$DigVer;
+  
 }
 
 function Split($Nom){
@@ -43,14 +47,17 @@ function Split($Nom){
     $Apellidos = array('a','a');
     
     $aux = explode(" ",$Nom);
-    
+
+    if(count($aux)<3){
+        return new soap_fault('3', '', 'Se necesitan al menos tres palabras separadas por espacio','');
+    }
+
     $Apellidos[1] = array_pop($aux);
     $Apellidos[0] = array_pop($aux);
 
-    $lengt = count($aux);
-
-    for($i=0;$i<$lengt;$i++)
-        $Nombres[$i]=$aux[$i];
+    foreach($aux as $input){
+        $Nombres[]=$input;
+    }
 
     return [
         $Nombres,
