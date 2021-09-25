@@ -52,9 +52,10 @@ function Split($Nom){
     for($i=0;$i<$lengt;$i++)
         $Nombres[$i]=$aux[$i];
 
-    $estructura = ["Nombres" => $Nombres , "Apellido_1" => $Apellidos[0],"Apellido_2" => $Apellidos[1] ];
-
-    return [["los","pol","kol"],["asd","poil","kojl"]];
+    return [
+        $Nombres,
+        $Apellidos
+    ];
 }
 
 $servicio->service(file_get_contents("php://input"));
