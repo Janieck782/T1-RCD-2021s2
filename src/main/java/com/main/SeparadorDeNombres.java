@@ -30,16 +30,12 @@ public class SeparadorDeNombres {
 
         pila_inputs.addAll(parsed_input);
 
-        List<String> listaApellidos = new ArrayList<String>() {
-            {
-                add(pila_inputs.pop());
-                add(pila_inputs.pop());
-            }
-        };
+        String materno = pila_inputs.pop();
+        String paterno = pila_inputs.pop();
 
         List<String> listaNombres = new ArrayList<>(pila_inputs);
 
-        SplitterResponseModel res = new SplitterResponseModel(listaNombres, listaApellidos);
+        SplitterResponseModel res = new SplitterResponseModel(listaNombres, paterno, materno);
 
         return Response.ok(res).build();
     }
