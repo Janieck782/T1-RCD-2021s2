@@ -8,7 +8,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 @Path("/separar/{input}")
 public class SeparadorDeNombres {
@@ -18,18 +20,24 @@ public class SeparadorDeNombres {
     @GET
     @Produces("application/json")
     public Response separar() {
-        List<String> listaNombres = new ArrayList<String>() {
-            {
-                add("Rafael");
-            }
-        };
+        List<String> parsed_input = Arrays.asList(input.split(" "));
+
+        if(parsed_input.size() < 3) {
+            return Response.status(400).build();
+        }
+
+        Stack<String> pila_inputs = new Stack<>();
+
+        pila_inputs.addAll(parsed_input);
 
         List<String> listaApellidos = new ArrayList<String>() {
             {
-                add("Morales");
-                add("Venegas");
+                add(pila_inputs.pop());
+                add(pila_inputs.pop());
             }
         };
+
+        List<String> listaNombres = new ArrayList<>(pila_inputs);
 
         SplitterResponseModel res = new SplitterResponseModel(listaNombres, listaApellidos);
 
