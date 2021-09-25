@@ -46,22 +46,23 @@
             Ingrese su rut sin puntos ni guion en el input RUT, seguido por el digito verificador
             en el input DV.
         </p>
-        <form action="#" class="needs-validation row" method="GET" id="validar_rut">
+        <form action="#" class="needs-validation row" method="GET" id="validar_rut" novalidate>
             <div class="col">
                 <label for="rut_input" class="form-label">RUT:</label>
-                <input type="number" name="rut" id="rut_input" class="form-control">
+                <input type="number" name="rut" id="rut_input" placeholder="9876543" required class="form-control">
+                <div class="invalid-feedback">Este campo debe ser rellenado con numeros enteros!</div>
             </div>
             <div class="col">
                 <label for="dv_input" class="form-label">Digito verificador:</label>
-                <input type="text" name="dv" id="dv_input" class="form-control">
+                <input type="text" name="dv" id="dv_input" placeholder="1"  required class="form-control">
+                <div class="invalid-feedback">Este campo no puede estar vacio!</div>
             </div>
             <div class="col-12 d-flex justify-content-center mt-3">
-                <button type="button" class="btn btn-primary">Comprobar</button>
+                <button type="submit" class="btn btn-primary">Comprobar</button>
             </div>
         </form>
     </section>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="dist/main.js"></script>
 </body>
-
 </html>

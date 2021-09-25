@@ -44,13 +44,14 @@
             Ingrese su nombre completo en el campo Nombre y presione el boton. Recuerde que este campo
             debe contener tres o mas 'palabras' separadas por un espacio.
         </p>
-        <form action="#" class="needs-validation row" method="GET" id="separar_nombres">
+        <form action="#" class="needs-validation row" method="GET" id="separar_nombres" novalidate>
             <div class="col">
                 <label for="nombre_input" class="form-label">Nombre completo:</label>
-                <input type="text" class="form-control" name="nombre" id="nombre_input">
+                <input type="text" class="form-control" name="nombre" placeholder="Wilfedro Transito Primitivo" required id="nombre_input">
+                <div class="invalid-feedback">Este campo no puede estar vacio!</div>
             </div>
             <div class="col-12 d-flex justify-content-center mt-3">
-                <button type="button" class="btn btn-primary">Enviar nombre</button>
+                <button type="submit" class="btn btn-primary">Enviar nombre</button>
             </div>
         </form>
     </section>
