@@ -1,3 +1,4 @@
+  
 class nombre{
     constructor(nombre,apellidoP,apellidoM){
         this.nombre = [];
@@ -18,21 +19,18 @@ let nom_ = new nombre;
 
 function guardarRut(enlace){
     let in_r = document.getElementById(`rut_aux`).value;
-    var valoresAceptados = /^[0-9]+$/;
-    if (in_r.indexOf("-") == -1){
-        alert("Formato de RUT no valido.");
-    }
-    else{
-        let run = in_r.split("-");
+    let in_d = document.getElementById('rut_dv').value;
+    var valoresAceptados = /^[0-9]+$/;  
+        let run = [];
+         run[0] = in_r;
+         run[1] = in_d;
         if(run[0].match(valoresAceptados) && (run[1].match(valoresAceptados) || run[1] == "k" || run[1] == "K")){
             rut_.entero = parseInt(run[0]);
-            rut_.dv = run[1].toLowerCase();
-            comprobar(in_r);
-
+            rut_.dv = run[1].toLowerCase();   
         }else{
             alert("Formato de RUT no valido.");
         }
-    }
+    
 }
 
 function guardarNombre(enlace){
