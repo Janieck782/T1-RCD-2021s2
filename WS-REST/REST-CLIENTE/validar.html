@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validacion de RUT</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Cliente REST</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarsupportedcontent" aria-controls="navbarsupportedcontent" aria-expanded="false"
+                aria-label="toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsupportedcontent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Pagina principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="validar.html">Validar rut</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="split.html">Separar nombre</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="container rounded my-3 p-2 text-danger" id="api_error" style="background-color: rgb(255, 173, 186);"
+        hidden>
+        <h1 class='display-1'>404!</h1>
+        <p class='lead'>Ha ocurrido un error al intentar conectar con la API. Por favor revise que el archivo
+            config.json contenga
+            los valores correctos y la API este montada en Tomcat</p>
+    </section>
+    <section class="container mt-5">
+        <h2 class='display-4'>Funcion validar rut</h2>
+        <p class="lead">En esta seccion se ejecuta la llamada a la API para la validacion de un RUT.
+            Ingrese su rut sin puntos ni guion en el input RUT, seguido por el digito verificador
+            en el input DV.
+        </p>
+        <form action="#" class="needs-validation row" method="GET" id="validar_rut" novalidate>
+            <div class="col">
+                <label for="rut_input" class="form-label">RUT:</label>
+                <input type="number" name="rut" id="rut_input" placeholder="9876543" required class="form-control"
+                    onchange="validar_input_rut(this)">
+                <div class="invalid-feedback">Este campo debe ser rellenado con numeros enteros!</div>
+            </div>
+            <div class="col">
+                <label for="dv_input" class="form-label">Digito verificador:</label>
+                <input type="text" name="dv" id="dv_input" placeholder="1" required class="form-control"
+                    oninput="validar_input_dv(this)">
+                <div class="invalid-feedback">Este campo debe contener un digito o la letra 'K'</div>
+            </div>
+            <div class="col-12 d-flex justify-content-center mt-3">
+                <button type="submit" class="btn btn-primary">Comprobar</button>
+            </div>
+        </form>
+        <div class="d-flex justify-content-center text-center">
+            <div class="col-8 rounded my-3 p-2 text-danger" id="not_valid" hidden style="background-color: rgb(255, 173, 186);">
+                <h1 class="display-3">Huh...</h1>
+                <p class="lead">El RUT y Digito verificador ingreso no corresponden entre si</p>
+            </div>
+            <div class="col-8 rounded my-3 p-2 text-success" id="valid" hidden style="background-color: rgb(203, 255, 250);">
+                <h1 class="display-3">Yay</h1>
+                <p class="lead">El digito verificador corresponde al RUT ingresado!</p>
+            </div>
+        </div>
+
+    </section>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="dist/main.js"></script>
+</body>
+
+</html>
