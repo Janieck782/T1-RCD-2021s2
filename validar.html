@@ -40,29 +40,34 @@
             config.json contenga
             los valores correctos y la API este montada en Tomcat</p>
     </section>
-    <section class="container">
-        <h2 class='display-4'>Funcion validar rut</h2>
-        <p class="lead">En esta seccion se ejecuta la llamada a la API para la validacion de un RUT.
-            Ingrese su rut sin puntos ni guion en el input RUT, seguido por el digito verificador
-            en el input DV.
-        </p>
-        <form action="#" class="needs-validation row" method="GET" id="validar_rut" novalidate>
-            <div class="col">
-                <label for="rut_input" class="form-label">RUT:</label>
-                <input type="number" name="rut" id="rut_input" placeholder="9876543" required class="form-control">
-                <div class="invalid-feedback">Este campo debe ser rellenado con numeros enteros!</div>
-            </div>
-            <div class="col">
-                <label for="dv_input" class="form-label">Digito verificador:</label>
-                <input type="text" name="dv" id="dv_input" placeholder="1"  required class="form-control">
-                <div class="invalid-feedback">Este campo no puede estar vacio!</div>
-            </div>
-            <div class="col-12 d-flex justify-content-center mt-3">
-                <button type="submit" class="btn btn-primary">Comprobar</button>
-            </div>
-        </form>
+    <section class="container mt-5">
+            <h2 class='display-4'>Funcion validar rut</h2>
+            <p class="lead">En esta seccion se ejecuta la llamada a la API para la validacion de un RUT.
+                Ingrese su rut sin puntos ni guion en el input RUT, seguido por el digito verificador
+                en el input DV.
+            </p>
+            <form action="#" class="needs-validation row" method="GET" id="validar_rut" novalidate>
+                <div class="col">
+                    <label for="rut_input" class="form-label">RUT:</label>
+                    <input type="number" name="rut" id="rut_input" placeholder="9876543" required class="form-control"
+                        onchange="validar_input_rut(this)">
+                    <div class="invalid-feedback">Este campo debe ser rellenado con numeros enteros!</div>
+                </div>
+                <div class="col">
+                    <label for="dv_input" class="form-label">Digito verificador:</label>
+                    <input type="text" name="dv" id="dv_input" placeholder="1" required class="form-control"
+                        oninput="validar_input_dv(this)">
+                    <div class="invalid-feedback">Este campo debe contener un digito o la letra 'K'</div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Comprobar</button>
+                </div>
+            </form>
+    
+
     </section>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="dist/main.js"></script>
 </body>
+
 </html>

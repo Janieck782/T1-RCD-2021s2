@@ -73,3 +73,23 @@ function separarnombres(element) {
   }
   return element.setCustomValidity("");
 }
+
+function validar_input_rut(element) {
+  const string = element.value;
+  if (isNaN(string)) {
+    return element.setCustomValidity("Este espacio debe ser un numero");
+  }
+  return element.setCustomValidity("");
+}
+
+function validar_input_dv(element) {
+  if (element.value.length > 1) {
+    element.value = element.value[1];
+  }
+  const string = element.value;
+  const reg = new RegExp("[0-9kK]");
+    if(!reg.test(string)){
+        return element.setCustomValidity("El digito verificador solo puede ser un numero o la letra K");
+    } 
+    return element.setCustomValidity('');
+}
