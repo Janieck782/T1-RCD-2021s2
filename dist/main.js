@@ -56,6 +56,21 @@
               listaApellidos.appendChild(materno);
             });
         } else if (form.id == "validar_rut") {
+          const rut = form.querySelector("#rut_input").value;
+          const dv = form.querySelector("#dv_input").value;
+          fetch(`${api}/validar/${rut}/${dv}`)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.valid) {
+                document.querySelector("#valid").removeAttribute("hidden");
+                document
+                  .querySelector("#not_valid")
+                  .setAttribute("hidden", true);
+              } else {
+                document.querySelector("#not_valid").removeAttribute("hidden");
+                document.querySelector("#valid").setAttribute("hidden", true);
+              }
+            });
         }
 
         form.classList.add("was-validated");
@@ -88,8 +103,10 @@ function validar_input_dv(element) {
   }
   const string = element.value;
   const reg = new RegExp("[0-9kK]");
-    if(!reg.test(string)){
-        return element.setCustomValidity("El digito verificador solo puede ser un numero o la letra K");
-    } 
-    return element.setCustomValidity('');
+  if (!reg.test(string)) {
+    return element.setCustomValidity(
+      "El digito verificador solo puede ser un numero o la letra K"
+    );
+  }
+  return element.setCustomValidity("");
 }
