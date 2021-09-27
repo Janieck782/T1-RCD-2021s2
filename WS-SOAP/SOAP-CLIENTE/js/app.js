@@ -21,10 +21,29 @@ let api = "";
   fetch("./js/config.json")
     .then((response) => response.json())
     .then((data) => {
-      api = `${data.api_host}:${data.api_port}/${data.location}/`;
+      api = `${data.api_host}:${data.api_port}/${data.location}/index.php`;
     })
     .then(() => {
-      console.log(api);
+        $.soap({
+            url: api,
+            // method: "Split",
+         
+            data: {
+                Nom: "Rafael Morales Venegas"
+            },
+         
+            success: function (soapResponse) {
+                // do stuff with soapResponse
+                // if you want to have the response as JSON use soapResponse.toJSON();
+                // or soapResponse.toString() to get XML string
+                // or soapResponse.toXML() to get XML DOM
+                console.log(soapResponse);
+            },
+            error: function (SOAPResponse) {
+                // show error
+                console.log(SOAPResponse);
+            }
+        });
     });
 })();
 
